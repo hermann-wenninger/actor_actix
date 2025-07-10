@@ -1,0 +1,11 @@
+[package]
+name = "actor_actix"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+actix = "0.13"
+actix-rt = "2"
+sqlx = { version = "0.7", features = ["postgres", "runtime-tokio-native-tls", "macros"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+dotenvy = "0.15"
