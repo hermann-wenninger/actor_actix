@@ -9,7 +9,7 @@ use sqlx::PgPool;
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
 
-    let database_url = std::env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+    let database_url = std::env::var("DATABASE_URL").expect("DATABASE_URL must be set dont't forget");
     let pool = PgPool::connect(&database_url).await.expect("DB connection failed");
 
     // Start Actor
