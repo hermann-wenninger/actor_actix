@@ -9,3 +9,8 @@ impl NewItem {
         return NewItem{title, status: String::from("pending"), user_id}
     }
 }
+pub struct News{
+    pub title:String,
+    pub description:String,
+    pub date: u32,
+}
