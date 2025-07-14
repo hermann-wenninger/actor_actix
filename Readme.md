@@ -1,1 +1,1 @@
-#### Actix Actor Example
+#### Simple Actix Actor Example
