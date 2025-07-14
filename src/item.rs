@@ -1,3 +1,5 @@
+use bcrypt::verify;
+
 pub struct NewItem {
     pub title: String,
     pub status: String,
