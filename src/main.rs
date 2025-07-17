@@ -4,13 +4,14 @@ use doit::structs::pending::Pending;
 
 use doit::ItemTypes;
 use doit::doit_factory;
+use doit::structs::traits::create::Create;
 
 fn main()  {
 
 let doit_item:Result<ItemTypes, &'static str> = doit_factory("pending","find work");
 match doit_item.unwrap(){
 
-    ItemTypes::Pending(item)=>println!("Ist n pending item with the value::: {}",item.super_struct.title),
+    ItemTypes::Pending(item)=> item.create(&item.super_struct.title),
     ItemTypes::Done(item)=>println!("Ist n done item with the value::: {}",item.super_struct.title),
 }
 
