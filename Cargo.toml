@@ -4,8 +4,9 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-actix = "0.13"
-actix-rt = "2"
-sqlx = { version = "0.7", features = ["postgres", "runtime-tokio-native-tls", "macros"] }
-tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
-dotenvy = "0.15"
+actix = "0.13.4"
+actix-rt = "2.9"
+sqlx = { version = "0.8.0", features = ["postgres", "runtime-tokio-native-tls", "macros"] }
+tokio = { version = "1.45", features = ["macros", "rt-multi-thread"] }
+dotenvy = "0.15.6"
+serde_json = {version = "1.0.139", default-features = false, features = ["alloc"]}
