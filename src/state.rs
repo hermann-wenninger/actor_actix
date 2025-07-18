@@ -14,3 +14,9 @@ pub fn read_json_file(file_name:&str)->Map<String,Value>{
     let state:Map<String, Value> = json.as_object().unwrap().clone();
     return state;
 }
+
+pub fn write_json_file(file_name:&str, data:Map<String,Value>){
+    let json = json!(data);
+    let json_string = serde_json::to_string_pretty(&json).unwrap();
+    fs::write(file_name, json_string).unwrap();
+}
