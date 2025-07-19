@@ -14,15 +14,30 @@ use serde_json::value::Value;
 fn main()  {
 
 let args = std::env::args().collect::<Vec<String>>();
+if args.len() < 3 {
+    eprintln!("Usage: {} <status> <title>", args[0]);
+    std::process::exit(1);
+}
 let status: &String = &args[1];
 let titel: &String = &args[2];
-println!("{}:::::{}",status,titel);
+
 let mut state: Map<String,Value> = read_json_file(&String::from("./jsonfile.json"));
-println!("{:?}", &state);
+
 state.insert(titel.to_string(), json!(status));
  write_json_file("./jsonfile.json",  state);
 
 
+
+
+
+
+
+
+
+
+
+
+ 
 let doit_item:Result<ItemTypes, &'static str> = doit_factory("pending","find work");
 match doit_item.unwrap(){
 
