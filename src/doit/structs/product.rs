@@ -4,7 +4,11 @@ pub struct Product{
 }
 impl Product{
     pub fn new(self,name:String,number:u32)->Product{
-        println!("{self.name}-self.number")
+        println!("{self.name}-self.number");
+        self
+    }
+    pub selled(self)->(){
+        println!("{self.name}{self.number} - is selled");
     }
     
 }
