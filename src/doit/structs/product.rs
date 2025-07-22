@@ -2,13 +2,13 @@ pub struct Product{
     name:String,
     number:u32,
 }
-impl Product{
-    pub fn new(self,name:String,number:u32)->Product{
-        println!("{self.name}-self.number");
-        self
+impl Product {
+    pub fn new(name: String, number: u32) -> Product {
+        println!("{name}-{number}");
+        Product { name, number }
     }
-    pub selled(self)->(){
-        println!("{self.name}{self.number} - is selled");
+    pub fn selled(&self) {
+        println!("{}{} - is selled", self.name, self.number);
     }
     
 }
