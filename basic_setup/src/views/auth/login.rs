@@ -6,5 +6,5 @@
 /// # Returns
 /// (String) message stating that it's the login view
 pub async fn login() -> String {
-    format!("Login view")
+    format!("Login view............")
 }
