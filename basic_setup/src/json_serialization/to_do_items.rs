@@ -5,6 +5,7 @@ use crate::structs::base::Base;
 #[derive(Serialize)]
 pub struct TodoItems{
     pub pending_items:Vec<Base>,
-    pub done_items:Vec<Base>
-
+    pub done_items:Vec<Base>,
+    pub done_item_count: i8,
+    pub pending_item_count: i8,
 }
