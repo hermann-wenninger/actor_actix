@@ -1,9 +1,9 @@
 use serde::Serialize;
 use crate::to_do::ItemTypes;
-use crate::structs::base::Base;
+use crate::to_do::structs::base::Base;
 
 #[derive(Serialize)]
-pub struct TodoItems{
+pub struct ToDoItems{
     pub pending_items:Vec<Base>,
     pub done_items:Vec<Base>,
     pub done_item_count: i8,
@@ -13,7 +13,7 @@ pub struct TodoItems{
 impl ToDoItems {
 
  pub fn new(input_items: Vec<ItemTypes>) -> ToDoItems {
-    
+
  let mut pending_array_buffer = Vec::new();
  let mut done_array_buffer = Vec::new();
 
