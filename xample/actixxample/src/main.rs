@@ -1,6 +1,7 @@
 use actix_web::{web, App, HttpRequest, HttpServer, HttpResponse, Responder};
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
+use actix_cors::Cors;
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, Clone)]
 struct Player {
@@ -41,8 +42,14 @@ async fn main() -> std::io::Result<()> {
     let state = AppState { players: player_map };
 
     HttpServer::new(move || {
+        let cors = Cors::default()
+            .allow_any_origin()         // Vorsicht: In Produktion besser nur bestimmte Domains erlauben!
+            .allow_any_method()
+            .allow_any_header()
+            .supports_credentials();
         App::new()
             .app_data(web::Data::new(state.clone()))
+             .wrap(cors) 
             .route("/player/{name}", web::get().to(get_player))
             .route("/player", web::post().to(add_player))
     })
