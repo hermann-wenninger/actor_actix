@@ -1,3 +1,52 @@
-fn main() {
-    println!("Hello, world!");
+use actix_web::{web, App, HttpRequest, HttpServer, HttpResponse, Responder};
+use std::collections::HashMap;
+use std::sync::{Arc, Mutex};
+
+#[derive(Debug, serde::Serialize, serde::Deserialize, Clone)]
+struct Player {
+    name: String,
+    score: u32,
+}
+
+type SharedPlayer = Arc<Mutex<Player>>;
+type PlayerMap = Arc<Mutex<HashMap<String, SharedPlayer>>>;
+
+#[derive(Clone)]
+struct AppState {
+    players: PlayerMap,
+}
+
+async fn get_player(req: HttpRequest, data: web::Data<AppState>) -> impl Responder {
+    let name = req.match_info().get("name").unwrap_or("unknown");
+
+    let players = data.players.lock().unwrap();
+    if let Some(player_arc) = players.get(name) {
+        let player = player_arc.lock().unwrap();
+        HttpResponse::Ok().json(&*player)
+    } else {
+        HttpResponse::NotFound().body("Player not found")
+    }
+}
+
+async fn add_player(data: web::Data<AppState>, body: web::Json<Player>) -> impl Responder {
+    let mut players = data.players.lock().unwrap();
+    let player = Arc::new(Mutex::new(body.into_inner()));
+    players.insert(player.lock().unwrap().name.clone(), player.clone());
+    HttpResponse::Ok().body("Player added")
+}
+
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    let player_map: PlayerMap = Arc::new(Mutex::new(HashMap::new()));
+    let state = AppState { players: player_map };
+
+    HttpServer::new(move || {
+        App::new()
+            .app_data(web::Data::new(state.clone()))
+            .route("/player/{name}", web::get().to(get_player))
+            .route("/player", web::post().to(add_player))
+    })
+    .bind(("127.0.0.1", 8080))?
+    .run()
+    .await
 }

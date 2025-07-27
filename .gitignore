@@ -1,3 +1,13 @@
 /target
 /managing_views/target
 /basic_setup/target
+/xample/actixxample/target
+/target/debug
+/target/release
+/target/debug/deps
+/target/release/deps
+/target/debug/build
+/target/release/build
+/target/debug/.fingerprint
+/target/release/.fingerprint
+/target/debug/deps/libactix_web-*.rlib
