@@ -3,6 +3,8 @@ use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use actix_cors::Cors;
 mod handlers;
+use handlers::PlayerHandlers;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, Clone)]
 struct Player {
@@ -53,6 +55,9 @@ async fn main() -> std::io::Result<()> {
              .wrap(cors) 
             .route("/player/{name}", web::get().to(get_player))
             .route("/player", web::post().to(add_player))
+            .route("/player/{name}", web::put().to(handlers::update_player))
+            .route("/player/{name}/score", web::patch().to(handlers::increase_score))
+            .route("/players", web::get().to(handlers::list_players))
     })
     .bind(("127.0.0.1", 8080))?
     .run()
