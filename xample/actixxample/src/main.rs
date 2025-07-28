@@ -2,6 +2,7 @@ use actix_web::{web, App, HttpRequest, HttpServer, HttpResponse, Responder};
 use std::collections::HashMap;
 use std::sync::{Arc, Mutex};
 use actix_cors::Cors;
+mod handlers;
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, Clone)]
 struct Player {
