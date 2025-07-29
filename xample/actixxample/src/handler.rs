@@ -1,11 +1,7 @@
 /// Spieler aktualisieren (Name oder Score)
 /// # Arguments
 /// * (HttpRequest): die Anfrage, um den Spielernamen zu extrahieren
-async fn update_player(
-    req: HttpRequest,
-    data: web::Data<AppState>,
-    body: web::Json<Player>,
-) -> impl Responder {
+async fn update_player(req: HttpRequest,data: web::Data<AppState>,body: web::Json<Player>,) -> impl Responder {
     let name = req.match_info().get("name").unwrap_or("");
     let mut players = data.players.lock().unwrap();
 
