@@ -17,7 +17,7 @@ async fn update_player(
     }
 }
 
-/// Punktzahl erhöhen
+/// Punktzahl darstellen
 #[derive(Debug, serde::Deserialize)]
 struct ScoreUpdate {
     delta: i32,
@@ -41,7 +41,7 @@ async fn increase_score(
     }
 }
 
-/// Alle Spieler auflisten
+/// list all Players
 async fn list_players(data: web::Data<AppState>) -> impl Responder {
     let players = data.players.lock().unwrap();
     let all_players: Vec<Player> = players
