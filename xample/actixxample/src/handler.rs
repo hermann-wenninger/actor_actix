@@ -1,4 +1,6 @@
 /// Spieler aktualisieren (Name oder Score)
+/// # Arguments
+/// * (HttpRequest): die Anfrage, um den Spielernamen zu extrahieren
 async fn update_player(
     req: HttpRequest,
     data: web::Data<AppState>,
