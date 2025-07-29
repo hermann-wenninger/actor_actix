@@ -41,7 +41,7 @@ async fn increase_score(
     }
 }
 
-/// list all Players
+/// list all Players its a vector of Player structs
 async fn list_players(data: web::Data<AppState>) -> impl Responder {
     let players = data.players.lock().unwrap();
     let all_players: Vec<Player> = players
