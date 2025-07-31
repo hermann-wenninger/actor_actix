@@ -5,6 +5,7 @@ use crate::state::write_to_file;
 
 
 /// Trait for deleting to do items.
+#[allow(dead_code)]
 pub trait Delete {
 
     /// Deletes a to do item.

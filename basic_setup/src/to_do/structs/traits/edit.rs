@@ -5,6 +5,7 @@ use serde_json::json;
 use crate::state::write_to_file;
 
 /// The trait for editing steps.
+#[allow(dead_code)]
 pub trait Edit {
 
     /// Sets the to do item to Done.

@@ -21,11 +21,7 @@ struct ScoreUpdate {
     delta: i32,
 }
 
-async fn increase_score(
-    req: HttpRequest,
-    data: web::Data<AppState>,
-    body: web::Json<ScoreUpdate>,
-) -> impl Responder {
+async fn increase_score(req: HttpRequest,data: web::Data<AppState>,body: web::Json<ScoreUpdate>,) -> impl Responder {
     let name = req.match_info().get("name").unwrap_or("");
     let mut players = data.players.lock().unwrap();
 

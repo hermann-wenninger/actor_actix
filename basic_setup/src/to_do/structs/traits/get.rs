@@ -4,6 +4,7 @@ use serde_json::value::Value;
 
 
 /// Trait for getting to do items.
+#[allow(dead_code)]
 pub trait Get {
 
     /// Gets a to do item and prints it out to the console.

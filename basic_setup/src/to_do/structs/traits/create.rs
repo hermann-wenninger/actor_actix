@@ -6,6 +6,7 @@ use crate::state::write_to_file;
 
 
 /// Trait for creating to do items.
+#[allow(dead_code)]
 pub trait Create {
 
     /// Creates a to do item.
