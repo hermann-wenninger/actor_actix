@@ -1,4 +1,6 @@
 {
-  "coding": "PENDING",
-  "washing": "DONE"
+  "washing": {
+    "title": "washing",
+    "status": "PENDING"
+  }
 }

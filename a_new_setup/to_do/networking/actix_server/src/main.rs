@@ -2,6 +2,9 @@
 use actix_web::{web, App, HttpServer, Responder, HttpRequest};
 
 
+mod api;
+
+
 /// A basic handler that recieves a request and returns a greeting.
 /// 
 /// # Arguments

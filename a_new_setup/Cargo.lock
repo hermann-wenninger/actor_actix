@@ -1964,6 +1964,7 @@ name = "to-do-actix-server"
 version = "0.1.0"
 dependencies = [
  "actix-web",
+ "to-do-core",
  "tokio",
 ]
 
@@ -1972,6 +1973,7 @@ name = "to-do-axum-server"
 version = "0.1.0"
 dependencies = [
  "axum",
+ "to-do-core",
  "tokio",
 ]
 
@@ -1999,6 +2001,7 @@ dependencies = [
  "http-body-util",
  "hyper 1.4.1",
  "hyper-util",
+ "to-do-core",
  "tokio",
 ]
 
@@ -2007,6 +2010,7 @@ name = "to-do-rocket-server"
 version = "0.1.0"
 dependencies = [
  "rocket",
+ "to-do-core",
 ]
 
 [[package]]
