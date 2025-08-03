@@ -1,5 +1,6 @@
 //! File: to_do/core/src/api/basic_actions/create.rs
 use crate::structs::ToDoItem;
+use glue::{errors::NanoServiceError,token::HeaderToken};
 
 #[cfg(feature = "json-file-storage")]
 use to_do_dal::json_file::save_one;
@@ -17,9 +18,9 @@ use glue::errors::NanoServiceError;
 /// 
 /// # Returns
 /// An `ItemTypes` enum representing the item created.
-pub async fn create(item: ToDoItem) 
-    -> Result<ToDoItem, NanoServiceError> {
-    let _ = save_one(&item.title.to_string(), &item)?;
-    Ok(item)
+pub async fn create(token: HeaderToken, body: Json<ToDoItem>)-> Result<HttpResponse, NanoServiceError> {
+    println!("Token: {}", token.message);
+    let _ = create_core(body.into_inner()).await?;
+    Ok(HttpResponse::Ok().json(get_all_core().await?))
 }
 
