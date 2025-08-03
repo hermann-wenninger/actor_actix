@@ -12,3 +12,4 @@
 /target/release/.fingerprint
 /target/debug/deps/libactix_web-*.rlib
 a_new_setup/target
+ingress/frontend/node_modules
