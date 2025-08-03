@@ -21,8 +21,7 @@ use glue::errors::{
 /// All of the items in the to-do list.
 pub async fn delete_by_name(req: HttpRequest) -> Result<HttpResponse, NanoServiceError> {
     match req.match_info().get("name") {
-        Some(name) => {
-            delete_core(name).await?;
+        Some(name) => {delete_core(name).await?;
         },
         None => {
             return Err(
