@@ -3,7 +3,7 @@ pub mod get;
 pub mod delete;
 pub mod update;
 
-use actix_web::web::{ServiceConfig, get, scope, post, delete};
+use actix_web::web::{ServiceConfig, get, scope, post, delete, put};
 
 
 /// Registers the basic actions routes so we can mount them in the server.
@@ -17,5 +17,6 @@ pub fn basic_actions_factory(app: &mut ServiceConfig) {
         .route("get/{name}", get().to(get::get_by_name))
         .route("create", post().to(create::create))
         .route("delete/{name}", delete().to(delete::delete_by_name))
+        .route("update", put().to(update::update))
     );
 }

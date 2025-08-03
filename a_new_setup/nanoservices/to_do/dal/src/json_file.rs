@@ -12,13 +12,9 @@ use glue::errors::{
 use glue::safe_eject;
 
 
-/// Opens a file.
-/// 
-/// # Arguments
-/// - `path` - An optional string slice that specifies the path to the file.
-/// 
-/// # Returns
-/// a file handle to perform read/write operations with.
+
+
+
 fn get_handle(path: Option<&str>) -> Result<File, NanoServiceError>{
     let path = match path {
         Some(p) => p,
@@ -39,13 +35,7 @@ fn get_handle(path: Option<&str>) -> Result<File, NanoServiceError>{
 }
 
 
-/// Opens a file for writing.
-/// 
-/// # Arguments
-/// - `path` - An optional string slice that specifies the path to the file.
-/// 
-/// # Returns
-/// a file handle to perform write operations with.
+
 fn get_write_handle(path: Option<&str>) -> Result<File, NanoServiceError> {
     let path = match path {
         Some(p) => p,
@@ -68,10 +58,7 @@ fn get_write_handle(path: Option<&str>) -> Result<File, NanoServiceError> {
 
 
 
-/// Gets all the tasks from the JSON file.
-/// 
-/// # Returns
-/// a hashmap of tasks.
+
 pub fn get_all<T: DeserializeOwned>() 
     -> Result<HashMap<String, T>, NanoServiceError> {
     let mut file = get_handle(None)?;
@@ -90,10 +77,7 @@ pub fn get_all<T: DeserializeOwned>()
 }
 
 
-/// Saves all the tasks to the JSON file.
-/// 
-/// # Arguments
-/// - `tasks` - a hashmap of tasks.
+
 pub fn save_all<T: Serialize>(tasks: &HashMap<String, T>) -> Result<(), NanoServiceError> {
     let mut file = get_write_handle(None)?;
     let json = safe_eject!(
@@ -110,13 +94,7 @@ pub fn save_all<T: Serialize>(tasks: &HashMap<String, T>) -> Result<(), NanoServ
 }
 
 
-/// Gets a task from the JSON file.
-/// 
-/// # Arguments
-/// - `id` - a string slice that specifies the id of the task.
-/// 
-/// # Returns
-/// a task.
+
 pub fn get_one<T: DeserializeOwned + Clone>(id: &str) 
     -> Result<T, NanoServiceError> {
     let tasks = get_all::<T>()?;
@@ -132,11 +110,6 @@ pub fn get_one<T: DeserializeOwned + Clone>(id: &str)
 }
 
 
-/// Saves a task to the JSON file.
-/// 
-/// # Arguments
-/// - `id` - a string slice that specifies the id of the task.
-/// - `task` - a reference to the task to save.
 pub fn save_one<T>(id: &str, task: &T) -> Result<(), NanoServiceError>
 where
     T: Serialize + DeserializeOwned + Clone,
@@ -147,10 +120,7 @@ where
 }
 
 
-/// Deletes a task from the JSON file.
-/// 
-/// # Arguments
-/// - `id` - a string slice that specifies the id of the task to delete.
+
 pub fn delete_one<T>(id: &str) -> Result<T, NanoServiceError>
 where
     T: Serialize + DeserializeOwned + Clone + std::fmt::Debug,
