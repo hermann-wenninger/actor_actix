@@ -14,7 +14,8 @@ framework=${1:-actix}
 case $framework in
   actix)
     echo "Building and running Actix server..."
-    cargo build -p to-do-actix-server
+    
+    
     cargo run -p to-do-actix-server &
     PID=$!
     ;;
