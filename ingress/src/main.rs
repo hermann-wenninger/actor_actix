@@ -3,7 +3,7 @@ use actix_web::{ web, App, HttpServer, Responder, HttpResponse, HttpRequest};
 use rust_embed::RustEmbed;
 use std::path::Path;
 //Cors header to accept the frontend
-use actix_cors::Cors;
+//use actix_cors::Cors;
 
 
 #[derive(RustEmbed)]
@@ -33,7 +33,7 @@ async fn index() -> HttpResponse {
 }
 
 async fn catch_all(req: HttpRequest) -> impl Responder {
-    if req.path.contains("/api/"){
+    if req.path().contains("/api/"){
         return HttpResponse::NotFound().finish()
     }
     if req.path().contains("frontend/public") {
@@ -53,14 +53,9 @@ async fn catch_all(req: HttpRequest) -> impl Responder {
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
-        let cors = Cors::default().allow_any_origin()
-                                  .allow_any_method()
-                                  .allow_any_header();
+        
         App::new()
-            .configure(to_do_views_factory)
-            .wrap(cors)
-            .default_service(web::route()
-            .to(catch_all))
+            .default_service(web::route().to(catch_all))
     })
         .bind("0.0.0.0:8001")?
         .run()
