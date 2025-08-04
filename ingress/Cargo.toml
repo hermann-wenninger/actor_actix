@@ -1,13 +1,3 @@
-[workspace]
-resolver = "2"
-members = [
-    "glue",
-    "ingress",
-    "nanoservices/to_do/core",
-    "nanoservices/to_do/dal",
-    "nanoservices/to_do/networking/actix_server"
-]
-
 [package]
 name = "ingress"
 version = "0.1.0"
