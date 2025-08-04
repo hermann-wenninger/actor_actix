@@ -6,12 +6,12 @@
       "serve": "serve public"
     },
     "dependencies": {
-      "react": "^19.0.0",
-      "react-dom": "19.0.0"
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
     },
     "devDependencies": {
-      "esbuild": "^0.25.8",
-      "esbuild-css-modules-plugin": "^3.1.4",
-      "serve": "^14.2.3"
+      "esbuild": "^0.19.11",
+      "esbuild-css-modules-plugin": "^3.1.0",
+      "serve": "^14.2.1"
     }
 }
