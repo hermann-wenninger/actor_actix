@@ -12,6 +12,7 @@
 /target/release/.fingerprint
 /target/debug/deps/libactix_web-*.rlib
 a_new_setup/target
-ingress/frontend/node_modules
+nothing_to_do/frontend/node_modules
 xyz/target
 ingress/target
+nothing_to_do/target
