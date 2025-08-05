@@ -28,7 +28,7 @@ async function handleRequest<T, X>(
         };
     }
 }
-
+}
 
 export async function postCall<T, X>(
     url: string, body: T, 
