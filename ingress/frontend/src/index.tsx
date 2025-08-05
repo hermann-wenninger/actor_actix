@@ -12,7 +12,7 @@ const App = () => {
         const fetchData = async () => {
             const response = await getAll();
 
-            if (!response) {
+            if (!response) { //After response error check
                 setError("No response received from server.");
             } else if (response.error) {
                 setError(response.error); // Set error if response contains an error
