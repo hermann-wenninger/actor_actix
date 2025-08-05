@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState } from 'react';
 import { createToDoItemCall } from "../api/create";
 
 
@@ -8,8 +8,8 @@ interface CreateToDoItemProps {
 
 
 export const CreateToDoItem: React.FC<CreateToDoItemProps> = ({ passBackResponse }) => {
-    const [title, setTitle] = useState<string>("");
-    const handleTitleChange = (e: ChangeEvent<HTMLInputElement>
+    const [title, setTitle] = useState("");
+    const handleTitleChange = (e:React.ChangeEvent<HTMLInputElement>
         ) => {
         setTitle(e.target.value);
     };
