@@ -1,8 +1,0 @@
-[package]
-name = "managing_views"
-version = "0.1.0"
-edition = "2024"
-
-[dependencies]
-actix-web = "4.0"
-actix-rt = "2.5"
